@@ -1,0 +1,23 @@
+{
+  "name": "build-blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BatyrSeven/build-blockchain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BatyrSeven/build-blockchain/issues"
+  },
+  "homepage": "https://github.com/BatyrSeven/build-blockchain#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
