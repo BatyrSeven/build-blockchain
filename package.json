@@ -19,5 +19,8 @@
   "homepage": "https://github.com/BatyrSeven/build-blockchain#readme",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "hex-to-binary": "^1.0.1"
   }
 }
