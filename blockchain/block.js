@@ -13,10 +13,19 @@ class Block {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Used to generate the first block in a chain with `GENESIS_DATA`
+     */
     static genesis() {
         return new this(GENESIS_DATA);
     }
 
+    /**
+     * Proof of work which is done to find a valid hash to add a new block
+     * @param {Object} param0 An object with params:
+     *   `lastBlock` - Last block in the chain which is used for hash and difficulty calculation
+     *   `data` - Data of a new block to be mined
+     */
     static mineBlock({ lastBlock, data }) {
         const lastHash = lastBlock.hash;
         let { difficulty } = lastBlock;
@@ -36,6 +45,12 @@ class Block {
         return new this({ timestamp, lastHash, data, difficulty, nonce, hash });
     }
 
+    /**
+     * Used to increase the difficulty (expensiveness of computations) to prevent 51% attack
+     * @param {Object} param0 An object with params:
+     *   `originalBlock` - An original block used for difficulty calculation
+     *   `timestamp` - current timestamp to calculate mine rate
+     */
     static adjustDifficulty({ originalBlock, timestamp }) {
         const { difficulty } = originalBlock;
 

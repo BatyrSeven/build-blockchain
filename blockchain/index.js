@@ -9,6 +9,10 @@ class Blockchain {
         this.chain = [Block.genesis()];
     }
 
+    /**
+     * Add new blocks to the chain
+     * @param {Object} param An object with `data` field which contains an array of blocks to be added
+     */
     addBlock({ data }) {
         const newBlock = Block.mineBlock({
             lastBlock: this.chain[this.chain.length - 1],
@@ -18,6 +22,12 @@ class Blockchain {
         this.chain.push(newBlock);
     }
 
+    /**
+     * Replace the old chain with a new one
+     * @param {Array} chain New chain
+     * @param {Boolean} validateTransactions Flag to enable transactions validation (set `false` for tests only)
+     * @param {Function} onSuccess Callback function on successful replacement
+     */
     replaceChain(chain, validateTransactions, onSuccess) {
         if (this.chain.length >= chain.length) {
             console.error('The incoming chain must be longer');
@@ -40,6 +50,10 @@ class Blockchain {
         this.chain = chain;
     }
 
+    /**
+     * Validate the transactions data of the passed chain
+     * @param {Object} param An object with `chain` field which contains the Array of blocks to be validated
+     */
     validTransactionData({ chain }) {
         for (let i = 0; i < chain.length; i++) {
             const block = chain[i];
@@ -88,6 +102,10 @@ class Blockchain {
         return true;
     }
 
+    /**
+     * Validation of a chain by hash and difficulty
+     * @param {Array} chain Chain to be validated
+     */
     static isValidChain(chain) {
         if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
             return false;

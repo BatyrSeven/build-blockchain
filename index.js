@@ -98,6 +98,9 @@ const syncWithRootState = () => {
     });
 };
 
+// There is a possibility to have multiple peers on the same host.
+// They will be launched on different ports.
+
 let PEER_PORT;
 
 if (process.env.GENERATE_PEER_PORT === 'true') {
